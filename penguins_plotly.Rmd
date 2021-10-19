@@ -4,7 +4,27 @@ author: "Devon Rossi"
 date: "10/19/2021"
 output: html_document
 ---
-
+# Setup
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+#Packages
+# Install.packages("plotly," "DT") in console
+# plotly package -> interactive plots
+
+library(tidyverse)
+library(palmerpenguins)
+library(plotly)
+library(DT)
 ```
+
+# Data Visualization
+```{r}
+# Make a scatterplot of penguing flipper_length_mm (x-axis) versus body_mass_g (y-axis), with points having different colors based on species
+
+penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_jitter(aes(color = species))
+
+ggplotly(penguins_graph)
+```
+
